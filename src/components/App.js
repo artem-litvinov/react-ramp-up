@@ -1,25 +1,42 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
-import Header from './common/Header'
-import HomePage from './home/HomePage';
-import LoginPage from './login/LoginPage';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { Route, Redirect } from 'react-router-dom';
+
+import Header from './common/Header';
+import Routes from './Routes';
 
 class App extends Component {
+  constructor(props, context) {
+    super(props, context);
+  }
+
   render() {
+    const loggedIn = this.props.loginStatus.loggedIn;
     return (
       <div className='text-center'>
-        <Header />
+        <Header displayNavigation={loggedIn} />
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <Route exact path='/' component={HomePage} />
-              <Route exact path='/login' component={LoginPage} />
+              <Routes loggedIn={loggedIn}/>
             </div>
           </div>
         </div>
       </div>
+
     );
   }
-}
+};
 
-export default App;
+App.propTypes = {
+
+};
+
+function mapStateToProps(state, ownProps) {
+  return {
+    loginStatus: state.loginStatus
+  };
+};
+
+export default connect(mapStateToProps)(App);

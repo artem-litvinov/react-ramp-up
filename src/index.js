@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import App from "./components/App";
+import { setLoginStatus } from './actions/loginActions';
 import configureStore from './store/configureStore';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -12,7 +13,8 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import './index.css';
 
 const store = configureStore();
+store.dispatch(setLoginStatus());
 
-ReactDOM.render(<Provider store={store}><BrowserRouter><App /></BrowserRouter></Provider>,
+ReactDOM.render(<Provider store={store}><BrowserRouter ><App /></BrowserRouter></Provider>,
   document.getElementById('root'));
 registerServiceWorker();

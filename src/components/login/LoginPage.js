@@ -1,29 +1,38 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-const SimpleInput = ({ type, label }) => {
-  return (
-    <div className="form-group">
-      <label for="exampleInputPassword1">{label}</label>
-      <input type={type} className="form-control" id="exampleInputPassword1" placeholder={label} />
-    </div>
-  );
-}
+import RoutedMenuLink from '../common/RoutedMenuLink';
+import LoginForm from './LoginForm';
+import * as loginActions from '../../actions/loginActions';
 
-const LoginPage = ({ username }) => {
-  return (
-    <div className="jumbotron form-signin">
-      <form>
-        <h4 class="card-title">Log into Prism</h4>
-        <SimpleInput type='text' label='Username'/>
-        <SimpleInput type='password' label='Password' />
-        <div className="form-check">
-          <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-          <label className="form-check-label" for="exampleCheck1">Remember me</label>
-        </div>
-        <button type="submit" className="btn btn-primary">Log in</button>
-      </form>
-    </div>
-  );
+class LoginPage extends Component{
+  constructor(props, context) {
+    super(props, context);
+  }
+
+  render() {
+    return (
+      <LoginForm onLogin={this.props.actions.login}/>
+    );
+  }
 };
 
-export default LoginPage;
+LoginPage.propTypes = {
+
+};
+
+function mapStateToProps(state, ownProps) {
+  return {
+    loginStatus: state.loginStatus
+  };
+};
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(loginActions, dispatch)
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
