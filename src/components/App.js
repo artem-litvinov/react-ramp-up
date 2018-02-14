@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Route, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import Header from './common/Header';
 import Routes from './Routes';
@@ -39,4 +39,4 @@ function mapStateToProps(state, ownProps) {
   };
 };
 
-export default connect(mapStateToProps)(App);
+export default withRouter(connect(mapStateToProps)(App));

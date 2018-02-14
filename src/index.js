@@ -15,6 +15,6 @@ import './index.css';
 const store = configureStore();
 store.dispatch(setLoginStatus());
 
-ReactDOM.render(<Provider store={store}><BrowserRouter ><App /></BrowserRouter></Provider>,
+ReactDOM.render(<Provider store={store}><BrowserRouter><App /></BrowserRouter></Provider>,
   document.getElementById('root'));
 registerServiceWorker();

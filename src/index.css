@@ -18,6 +18,11 @@ body {
     color: rgba(0,0,0,.3);
 }
 
+.nav-item:hover {
+    color: rgba(0,0,0,.7);
+    text-decoration: none;
+}
+
 .nav-item.active {
     color: rgb(0,0,0);
 }

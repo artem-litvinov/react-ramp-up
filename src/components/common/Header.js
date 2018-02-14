@@ -1,16 +1,13 @@
 import React from 'react';
 import RoutedMenuLink from './RoutedMenuLink';
 import MenuNavigation from './MenuNavigation';
+import { NavLink } from 'react-router-dom';
 
 const Header = ({ displayNavigation }) => {
   return (
     <nav className="navbar navbar-toggleable-md navbar-light bg-faded">
-      <RoutedMenuLink
-        label="Prism"
-        to="/"
-        activeOnlyWhenExact={false}
-        activeClassName="navbar-brand"
-      />
+      <NavLink to="/home" className="navbar-brand"
+        activeClassName="navbar-brand">Prism</NavLink>
       {displayNavigation
         ? <MenuNavigation/>
         : null}
