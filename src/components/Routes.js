@@ -1,27 +1,39 @@
 import React from 'react';
 import { Route, Redirect, Switch } from 'react-router';
 
-import HomePage from './home/HomePage';
 import LoginPage from './login/LoginPage';
+import HomePage from './home/HomePage';
+import PeoplePage from './people/PeoplePage';
+import MyTeamPage from './myTeam/MyTeamPage';
 
 const Routes = ({ loggedIn }) => {
   return (
     <div>
-      <Route exact path="/" render={() => (
+      <Route exact path='/' render={() => (
         loggedIn
-          ? <Redirect push to="/home" />
-          : <Redirect push to="/login" />
+          ? <Redirect push to='/home' />
+          : <Redirect push to='/login' />
       )} />
-      <Route exact path="/login" render={() => (
+      <Route exact path='/login' render={() => (
         loggedIn
-          ? <Redirect push to="/home" />
+          ? <Redirect push to='/home' />
           : <LoginPage />
       )} />
-      <Route exact path="/home" render={() => (
+      <Route exact path='/home' render={() => (
         loggedIn
           ? <HomePage />
-          : <Redirect push to="/login" />
-      )}/>
+          : <Redirect push to='/login' />
+      )} />
+      <Route exact path='/people' render={() => (
+        loggedIn
+          ? <PeoplePage />
+          : <Redirect push to='/login' />
+      )} />
+      <Route exact path='/my-team' render={() => (
+        loggedIn
+          ? <MyTeamPage />
+          : <Redirect push to='/login' />
+      )} />
     </div>
   );
 };

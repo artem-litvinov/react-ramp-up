@@ -3,3 +3,9 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const SET_LOGIN_STATUS = 'SET_LOGIN_STATUS';
 
 export const LOAD_EMPLOYEES_SUCCESS = 'LOAD_EMPLOYEES_SUCCESS';
+
+export const ADD_TO_TEAM = 'ADD_TO_TEAM';
+
+export const REMOVE_FROM_TEAM = 'REMOVE_FROM_TEAM';
+
+export const USER_LOGOUT = 'USER_LOGOUT';

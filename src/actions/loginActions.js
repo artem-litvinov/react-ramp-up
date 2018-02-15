@@ -1,4 +1,4 @@
-import { SET_LOGIN_STATUS, LOGIN_SUCCESS } from '../constants/actionTypes';
+import { SET_LOGIN_STATUS, LOGIN_SUCCESS, USER_LOGOUT } from '../constants/actionTypes';
 import loginApi from '../api/loginApi';
 
 export function setLoginStatus(username) {
@@ -15,4 +15,8 @@ export function login({ username, password, rememberMe }) {
 
 export function loginSuccess(username) {
   return { type: LOGIN_SUCCESS, username };
+}
+
+export function logout() {
+  return { type: USER_LOGOUT };
 }

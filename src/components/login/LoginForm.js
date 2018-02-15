@@ -1,5 +1,12 @@
 import React, {Component} from 'react';
 import SimpleInput from './SimpleImput';
+import { FormControl, FormGroup, Form, Checkbox, Button, Jumbotron } from 'react-bootstrap';
+
+var formStyle = {
+  maxWidth: 300,
+  marginLeft: 'auto',
+  marginRight: 'auto',
+}
 
 class LoginForm extends Component {
   constructor(props, context) {
@@ -29,34 +36,36 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <div className="jumbotron form-signin">
-        <form onSubmit={this.handleSubmit}>
-          <h4 className="card-title">Log into Prism</h4>
-          <SimpleInput
-            type='text'
-            label='Username'
-            name='username'
-            onChange={this.onInputChange}
-          />
-          <SimpleInput
-            type='password'
-            label='Password'
-            name='password'
-            onChange={this.onInputChange}
-          />
-          <div className="form-check">
-            <input
-              type="checkbox"
-              name='rememberMe'
-              id="exampleCheck1"
-              onChange={this.onCheckboxChange}
-              className="form-check-input"
+      <Jumbotron>
+        <Form style={formStyle} onSubmit={this.handleSubmit}>
+          <h4 className='card-title'>Log into Prism</h4>
+          <FormGroup>
+            <FormControl
+              type='text'
+              placeholder='Username'
+              name='username'
+              onChange={this.onInputChange}
             />
-            <label className="form-check-label" htmlFor="exampleCheck1">Remember me</label>
-          </div>
-          <button type="submit" className="btn btn-primary">Log in</button>
-        </form>
-      </div>
+          </FormGroup>
+          <FormGroup>
+            <FormControl
+              type='password'
+              placeholder='Password'
+              name='password'
+              onChange={this.onInputChange}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Checkbox
+              name='rememberMe'
+              onChange={this.onCheckboxChange}
+            >
+              Remember me
+            </Checkbox>
+          </FormGroup>
+          <Button type='submit' bsStyle='primary'>Log in</Button>
+        </Form>
+      </Jumbotron>
     );
   }
 };

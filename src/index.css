@@ -27,23 +27,46 @@ body {
     color: rgb(0,0,0);
 }
 
+.nav-item .badge.badge-secondary {
+    background-color: rgba(108, 117, 125,.3);
+}
+
+.nav-item:hover .badge.badge-secondary {
+    background-color: rgba(108, 117, 125,.7);
+}
+
+.nav-item.active .badge.badge-secondary {
+    background-color: rgb(108, 117, 125);
+}
+
 .bg-faded {
     background-color: #f7f7f7;
 }
 
 .jumbotron {
-    margin: 20% 0;
+    margin-top: 15%;
     background-color: #ffffff;
-}
-
-.form-signin {
-    width: 100%;
-    max-width: 330px;
-    padding: 15px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .form-signin .btn.btn-primary {
     margin-top: 10px;
+}
+
+.checkbox label {
+    min-height: 20px;
+    margin-bottom: 0;
+    cursor: pointer;
+}
+
+.checkbox label input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.margin-top {
+    margin-top: 20px;
+}
+
+.input-group-btn .btn {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
 }

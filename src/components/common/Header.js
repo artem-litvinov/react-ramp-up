@@ -1,15 +1,18 @@
 import React from 'react';
 import RoutedMenuLink from './RoutedMenuLink';
 import MenuNavigation from './MenuNavigation';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { LogoutButton } from '../common/FAButtons';
 
-const Header = ({ displayNavigation }) => {
+const Header = ({ displayNavigation, onLogout, myTeamAmount }) => {
   return (
     <nav className="navbar navbar-toggleable-md navbar-light bg-faded">
-      <NavLink to="/home" className="navbar-brand"
-        activeClassName="navbar-brand">Prism</NavLink>
+      <Link to="/home" className="navbar-brand">Prism</Link>
       {displayNavigation
-        ? <MenuNavigation/>
+        ? <MenuNavigation myTeamAmount={myTeamAmount}/>
+        : null}
+      {displayNavigation
+        ? <LogoutButton onClick={onLogout}/>
         : null}
     </nav>
   );

@@ -3,9 +3,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import RoutedMenuLink from '../common/RoutedMenuLink';
+import * as actions from '../../actions/loginActions';
 import LoginForm from './LoginForm';
-import * as loginActions from '../../actions/loginActions';
 
 class LoginPage extends Component{
   constructor(props, context) {
@@ -20,7 +19,7 @@ class LoginPage extends Component{
 };
 
 LoginPage.propTypes = {
-
+  loginStatus: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
@@ -31,7 +30,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(loginActions, dispatch)
+    actions: bindActionCreators(actions, dispatch)
   }
 };
 

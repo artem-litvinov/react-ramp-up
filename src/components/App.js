@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import { Grid, Row, Col } from 'react-bootstrap';
 
+import * as actions from '../actions/loginActions';
 import Header from './common/Header';
 import Routes from './Routes';
 
@@ -11,32 +14,61 @@ class App extends Component {
     super(props, context);
   }
 
+  onLogout = () => {
+    this.props.actions.logout();
+  }
+
+  getMyTeamAmount = (myTeam) => {
+    let amount = 0;
+    if (myTeam) {
+      amount = Object.keys(myTeam).reduce((sum, key) => {
+        let current = myTeam[key];
+        if (current === true) return sum + 1;
+        return sum;
+      }, 0);
+    }
+    return amount;
+  }
+
   render() {
     const loggedIn = this.props.loginStatus.loggedIn;
-    return (
-      <div className='text-center'>
-        <Header displayNavigation={loggedIn} />
-        <div className="container">
-          <div className="row">
-            <div className="col-12">
-              <Routes loggedIn={loggedIn}/>
-            </div>
-          </div>
-        </div>
-      </div>
+    const myTeamAmount = this.getMyTeamAmount(this.props.myTeam);
 
+    return (
+      <div>
+        <Header
+          displayNavigation={loggedIn}
+          onLogout={this.onLogout}
+          myTeamAmount={myTeamAmount}
+        />
+        <Grid className='text-center'>
+          <Row>
+            <Col md={12}>
+              <Routes loggedIn={loggedIn}/>
+            </Col>
+          </Row>
+        </Grid>
+      </div>
     );
   }
 };
 
 App.propTypes = {
-
+  loginStatus: PropTypes.object.isRequired,
+  myTeam: PropTypes.object
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    loginStatus: state.loginStatus
+    loginStatus: state.loginStatus,
+    myTeam: state.myTeam
   };
 };
 
-export default withRouter(connect(mapStateToProps)(App));
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  }
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
