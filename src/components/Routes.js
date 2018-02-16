@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router';
+import { PrivateRoute, PublicRoute } from 'react-router-with-props';
 
 import LoginPage from './login/LoginPage';
 import HomePage from './home/HomePage';
@@ -14,26 +15,30 @@ const Routes = ({ loggedIn }) => {
           ? <Redirect push to='/home' />
           : <Redirect push to='/login' />
       )} />
-      <Route exact path='/login' render={() => (
-        loggedIn
-          ? <Redirect push to='/home' />
-          : <LoginPage />
-      )} />
-      <Route exact path='/home' render={() => (
-        loggedIn
-          ? <HomePage />
-          : <Redirect push to='/login' />
-      )} />
-      <Route exact path='/people' render={() => (
-        loggedIn
-          ? <PeoplePage />
-          : <Redirect push to='/login' />
-      )} />
-      <Route exact path='/my-team' render={() => (
-        loggedIn
-          ? <MyTeamPage />
-          : <Redirect push to='/login' />
-      )} />
+      <PublicRoute
+        exact path="/login"
+        authed={loggedIn}
+        redirectTo="/home"
+        component={LoginPage}
+      />
+      <PrivateRoute
+        exact path="/home"
+        authed={loggedIn}
+        redirectTo="/login"
+        component={HomePage}
+      />
+      <PrivateRoute
+        exact path="/people"
+        authed={loggedIn}
+        redirectTo="/login"
+        component={PeoplePage}
+      />
+      <PrivateRoute
+        exact path="/my-team"
+        authed={loggedIn}
+        redirectTo="/login"
+        component={MyTeamPage}
+      />
     </div>
   );
 };

@@ -1,17 +1,15 @@
+import axios from 'axios';
+
 function fetchRequest(url, callback) {
-  fetch(url)
+  axios.get(url)
     .then(function (response) {
-      var contentType = response.headers.get("content-type");
-      if (contentType && contentType.includes("application/json")) {
-        return response.json();
+      if (response.status === 200) {
+        return response.data;
       }
-      throw new TypeError("Oops, we haven't got JSON!");
-    })
-    .then(function (obj) {
-      return obj;
+      throw new TypeError("Oops, something went wrong!");
     })
     .then(callback)
-    .catch(function (error) { console.log(error); });;
+    .catch(function (error) { console.log(error); });
 }
 
 class PrismApi {
