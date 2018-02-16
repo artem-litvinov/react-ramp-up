@@ -4,10 +4,6 @@ import PropTypes from 'prop-types';
 import { Jumbotron } from 'react-bootstrap';
 
 class HomePage extends Component {
-  constructor(props, context) {
-    super(props, context);
-  }
-
   render() {
     const username = this.props.username;
 

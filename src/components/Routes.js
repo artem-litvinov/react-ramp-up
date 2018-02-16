@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Redirect, Switch } from 'react-router';
+import { Route, Redirect } from 'react-router';
 
 import LoginPage from './login/LoginPage';
 import HomePage from './home/HomePage';

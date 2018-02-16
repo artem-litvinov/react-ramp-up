@@ -10,10 +10,6 @@ import Header from './common/Header';
 import Routes from './Routes';
 
 class App extends Component {
-  constructor(props, context) {
-    super(props, context);
-  }
-
   onLogout = () => {
     this.props.actions.logout();
   }

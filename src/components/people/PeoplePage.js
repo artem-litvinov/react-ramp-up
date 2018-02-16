@@ -1,21 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { FormGroup, FormControl, Form, InputGroup, Button } from 'react-bootstrap';
 
 import EmployeePageBase from '../common/EmployeePageBase';
 import * as employeeActions from '../../actions/peopleActions';
 import * as myTeamActions from '../../actions/myTeamActions';
 import EmployeeCard from '../common/EmployeeCard';
 import { AddPersonButton, RemovePersonButton } from '../common/FAButtons';
-import SearchPanel from '../common/SearchPanel';
 
 class PeoplePage extends EmployeePageBase {
-  constructor(props, context) {
-    super(props, context);
-  }
-
   componentDidMount() {
     this.props.actions.loadEmployees();
   }
@@ -40,7 +34,9 @@ class PeoplePage extends EmployeePageBase {
 };
 
 PeoplePage.propTypes = {
-
+  actions: PropTypes.object.isRequired,
+  employees: PropTypes.array.isRequired,
+  myTeam: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {

@@ -1,24 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
-import { faUserTimes } from '@fortawesome/fontawesome-free-solid';
 
 import EmployeePageBase from '../common/EmployeePageBase';
 import * as employeeActions from '../../actions/peopleActions';
 import * as myTeamActions from '../../actions/myTeamActions';
 import EmployeeCard from '../common/EmployeeCard';
 import { RemovePersonButton } from '../common/FAButtons';
-import SearchPanel from '../common/SearchPanel';
 
 
 
 class MyTeamPage extends EmployeePageBase {
-  constructor(props, context) {
-    super(props, context);
-  }
-
   renderEmployee = (employee, index) => {
     const inTeam = this.props.myTeam[employee.Login] === true;
     const display = this.checkSearch(employee);
@@ -33,7 +26,9 @@ class MyTeamPage extends EmployeePageBase {
 };
 
 MyTeamPage.propTypes = {
-
+  actions: PropTypes.object.isRequired,
+  employees: PropTypes.array.isRequired,
+  myTeam: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {

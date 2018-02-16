@@ -1,17 +1,19 @@
 import React from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Col, Image } from 'react-bootstrap';
 
-const EmployeeCard = ({ children, imageSrc, FirstName, LastName }) => {
+const EmployeeCard = ({ children, imageSrc, FirstName, LastName, Dislocation }) => {
+  const fullName = `${FirstName} ${LastName}`
   return (
-    <div className='col-4'>
-      <div className="card mb-3">
-        <img className="card-img-top" src={imageSrc} alt="Card image cap" />
+    <Col md={4} sm={6}>
+      <div className="card mb-4">
+        <Image className="card-img-top" src={imageSrc} alt={fullName} />
         <div className="card-body">
-          <p className="card-text">{FirstName} {LastName}</p>
+          <h5 className="card-title">{fullName}</h5>
+          <p className="card-text">{Dislocation}</p>
           {children}
         </div>
       </div>
-    </div>
+    </Col>
   );
 };
 

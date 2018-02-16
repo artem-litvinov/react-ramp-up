@@ -1,6 +1,7 @@
 import React from 'react';
 import MenuNavigation from './MenuNavigation';
 import { Link } from 'react-router-dom';
+
 import { LogoutButton } from '../common/FAButtons';
 
 const Header = ({ displayNavigation, onLogout, myTeamAmount }) => {

@@ -1,14 +1,23 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { FormGroup, FormControl, Form, InputGroup, Button } from 'react-bootstrap';
 
-import * as employeeActions from '../../actions/peopleActions';
-import * as myTeamActions from '../../actions/myTeamActions';
-import EmployeeCard from '../common/EmployeeCard';
-import { AddPersonButton, RemovePersonButton } from '../common/FAButtons';
 import SearchPanel from '../common/SearchPanel';
+
+const PageBase = ({ children }) => {
+  return (
+    <div className='margin-top'>
+      {children}
+    </div>
+  );
+};
+
+const EmployeesContainer = ({ children }) => {
+  return (
+    <div className='d-flex justify-content-start flex-wrap margin-top'>
+      {children}
+    </div>
+  );
+};
 
 class EmployeePageBase extends Component {
   constructor(props, context) {
@@ -41,29 +50,21 @@ class EmployeePageBase extends Component {
     this.setState({ search: e.target.value });
   }
 
-  clearSearch = (e) => {
-    this.searchInput.value = '';
-    this.setState({ search: '' });
-  }
-
-  setSearchRef = (input) => {
-    this.searchInput = input;
-  }
-
   render() {
     return (
-      <div className='margin-top'>
-        <SearchPanel
-          searchRef={this.setSearchRef}
-          onInput={this.handleSearch}
-          onDelete={this.clearSearch}
-        />
-        <div className='d-flex justify-content-start flex-wrap margin-top'>
+      <PageBase>
+        <SearchPanel onChange={this.handleSearch}/>
+        <EmployeesContainer>
           {this.props.employees.map(this.renderEmployee)}
-        </div>
-      </div>
+        </EmployeesContainer>
+      </PageBase>
     );
   }
+};
+
+EmployeePageBase.propTypes = {
+  actions: PropTypes.object.isRequired,
+  employees: PropTypes.array.isRequired
 };
 
 export default EmployeePageBase;

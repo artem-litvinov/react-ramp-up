@@ -1,29 +1,46 @@
-import React from 'react';
-import { FormGroup, FormControl, Form, InputGroup, Button } from 'react-bootstrap';
+import React, { Component } from 'react';
+import { FormGroup, FormControl, Form, InputGroup } from 'react-bootstrap';
 
 import { DeleteButton } from './FAButtons';
 
+class SearchPanel extends Component {
+  constructor(props, context) {
+    super(props, context);
 
-const SearchPanel = ({ searchRef, onInput, onDelete }) => {
-  return (
-    <Form>
-      <FormGroup>
-        <InputGroup>
-          <input
-            ref={searchRef}
-            type='text'
-            placeholder='Search'
-            onChange={onInput}
-            className='form-control'
-          />
-          <InputGroup.Button>
-            <DeleteButton onClick={onDelete}/>
-          </InputGroup.Button>
-        </InputGroup>
-      </FormGroup>
-    </Form>
-  );
+    this.state = {
+      search: ''
+    };
+  }
+
+  clearSearch = (e) => {
+    this.searchInput.value = '';
+    this.setState({ search: '' });
+    this.props.onChange({ target: this.searchInput });
+  }
+
+  setSearchRef = (input) => {
+    this.searchInput = input;
+  }
+
+  render() {
+    return (
+      <Form>
+        <FormGroup>
+          <InputGroup>
+            <FormControl
+              ref={this.setSearchRef}
+              type='text'
+              placeholder='Search'
+              onChange={this.props.onChange}
+            />
+            <InputGroup.Button>
+              <DeleteButton onClick={this.clearSearch} />
+            </InputGroup.Button>
+          </InputGroup>
+        </FormGroup>
+      </Form>
+    );
+  }
 };
 
 export default SearchPanel;
-

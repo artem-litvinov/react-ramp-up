@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Badge, Nav } from 'react-bootstrap';
+import { Badge } from 'react-bootstrap';
 
 const MenuNavigation = ({ myTeamAmount }) => {
   return (

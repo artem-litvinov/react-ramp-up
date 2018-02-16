@@ -75,6 +75,7 @@ class LoginPage extends Component{
 };
 
 LoginPage.propTypes = {
+  actions: PropTypes.object.isRequired,
   loginStatus: PropTypes.object.isRequired
 };
 
