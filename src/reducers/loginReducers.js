@@ -6,7 +6,7 @@ const initialState = { loggedIn: false, username: ''};
 export default function loginReducers(state = initialState, action) {
   switch (action.type) {
     case SET_LOGIN_STATUS:
-      return Object.assign({}, state, action.loginStatus);
+      return { ...state, ...action.loginStatus };
 
     default:
       return state;

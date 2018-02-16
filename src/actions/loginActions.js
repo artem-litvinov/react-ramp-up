@@ -3,9 +3,7 @@ import LoginApi from '../api/LoginApi';
 
 export function checkLoginStatus() {
   return function (dispatch) {
-    return LoginApi.checkLoginStatus().then((loginStatus) => {
-      dispatch(setLoginStatus(loginStatus));
-    }).catch(err => { throw (err) });
+    return dispatch(setLoginStatus(LoginApi.checkLoginStatus()));
   }
 }
 

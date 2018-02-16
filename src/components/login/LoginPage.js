@@ -20,17 +20,17 @@ class LoginPage extends Component{
   }
 
   onInputChange = (event) => {
-    const field = event.target.name;
-    const newState = Object.assign({}, this.state);
-    newState[field] = event.target.value;
-    return this.setState(newState);
+    return this.setState({
+      ...this.state,
+      [event.target.name]: event.target.value
+    });
   }
 
   onCheckboxChange = (event) => {
-    const field = event.target.name;
-    const newState = Object.assign({}, this.state);
-    newState[field] = event.target.checked;
-    return this.setState(newState);
+    return this.setState({
+      ...this.state,
+      [event.target.name]: event.target.checked
+    });
   }
 
   handleSubmit = (event) => {

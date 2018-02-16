@@ -13,15 +13,8 @@ class LoginApi {
   }
 
   static checkLoginStatus() {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        const username = localStorage.getItem('username');
-        if (username) {
-          resolve({ loggedIn: true, username: username });
-        }
-        resolve({ loggedIn: false });
-      }, delay);
-    });
+    const username = localStorage.getItem('username');
+    return { loggedIn: !!username, username: username };
   }
 
   static logout() {

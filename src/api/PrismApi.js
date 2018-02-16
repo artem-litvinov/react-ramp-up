@@ -24,7 +24,7 @@ class PrismApi {
             if (aName > bName) return 1;
             return 0;
           });
-          resolve(Object.assign([], employees));
+          resolve(employees);
         });
     });
   }

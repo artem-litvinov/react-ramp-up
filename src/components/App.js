@@ -14,21 +14,9 @@ class App extends Component {
     this.props.actions.logout();
   }
 
-  getMyTeamAmount = (myTeam) => {
-    let amount = 0;
-
-    amount = Object.keys(myTeam).reduce((sum, key) => {
-      let current = myTeam[key];
-      if (current === true) return sum + 1;
-      return sum;
-    }, 0);
-
-    return amount;
-  }
-
   render() {
     const loggedIn = this.props.loginStatus.loggedIn;
-    const myTeamAmount = this.getMyTeamAmount(this.props.myTeam);
+    const myTeamAmount = Object.keys(this.props.myTeam).length;
 
     return (
       <div>

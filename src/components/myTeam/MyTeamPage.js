@@ -39,7 +39,7 @@ function mapStateToProps(state, ownProps) {
 };
 
 function mapDispatchToProps(dispatch) {
-  const actions = Object.assign({}, employeeActions, myTeamActions);
+  const actions = { ...employeeActions, ...myTeamActions };
   return {
     actions: bindActionCreators(actions, dispatch)
   }
