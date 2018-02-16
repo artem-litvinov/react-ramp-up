@@ -1,5 +1,5 @@
 import { LOAD_EMPLOYEES_SUCCESS } from '../constants/actionTypes';
-import prismApi from '../api/mockPrismApi';
+import prismApi from '../api/PrismApi';
 
 export function loadEmployees() {
   return function (dispatch) {

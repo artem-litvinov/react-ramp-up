@@ -1,12 +1,17 @@
 import React from 'react';
 import { Col, Image } from 'react-bootstrap';
 
-const EmployeeCard = ({ children, imageSrc, FirstName, LastName, Dislocation }) => {
-  const fullName = `${FirstName} ${LastName}`
+const EmployeeCard = ({ children, imageSrc, FirstName, LastName, Dislocation, Id }) => {
+  const fullName = `${FirstName} ${LastName}`;
+
   return (
-    <Col md={4} sm={6}>
+    <Col lg={4} md={6} sm={6}>
       <div className="card mb-4">
-        <Image className="card-img-top" src={imageSrc} alt={fullName} />
+        <Image
+          className="card-img-top"
+          alt={fullName}
+          src={`http://prism.akvelon.net/api/system/getphoto/${Id}`}
+        />
         <div className="card-body">
           <h5 className="card-title">{fullName}</h5>
           <p className="card-text">{Dislocation}</p>

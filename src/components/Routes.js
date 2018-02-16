@@ -9,7 +9,7 @@ import MyTeamPage from './myTeam/MyTeamPage';
 const Routes = ({ loggedIn }) => {
   return (
     <div>
-      <Route exact path='/' render={() => (
+      <Route path='/' render={() => (
         loggedIn
           ? <Redirect push to='/home' />
           : <Redirect push to='/login' />

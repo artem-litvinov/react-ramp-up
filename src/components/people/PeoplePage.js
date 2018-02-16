@@ -14,20 +14,19 @@ class PeoplePage extends EmployeePageBase {
     this.props.actions.loadEmployees();
   }
 
-  renderEmployee = (employee, index) => {
-    const inTeam = this.props.myTeam[employee.Login] === true;
+  renderEmployee = (employee) => {
     const display = this.checkSearch(employee);
+    const inTeam = this.props.myTeam[employee.Login] === true;
     return (
       display
         ? <EmployeeCard
-          key={index}
-          imageSrc={"./images/unknown-person.png"}
-          {...employee}
-        >
-          {inTeam
-            ? <RemovePersonButton onClick={() => this.removeFromTeam(employee.Login)} />
-            : <AddPersonButton onClick={() => this.addToTeam(employee.Login)} />}
-        </EmployeeCard>
+            key={employee.Id}
+            {...employee}
+          >
+            {inTeam
+              ? <RemovePersonButton onClick={() => this.removeFromTeam(employee.Login)} />
+              : <AddPersonButton onClick={() => this.addToTeam(employee.Login)} />}
+          </EmployeeCard>
         : null
     );
   }

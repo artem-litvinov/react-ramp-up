@@ -12,12 +12,12 @@ import { RemovePersonButton } from '../common/FAButtons';
 
 
 class MyTeamPage extends EmployeePageBase {
-  renderEmployee = (employee, index) => {
-    const inTeam = this.props.myTeam[employee.Login] === true;
+  renderEmployee = (employee) => {
     const display = this.checkSearch(employee);
+    const inTeam = this.props.myTeam[employee.Login] === true;
     return (
       inTeam && display
-        ? <EmployeeCard key={index} imageSrc={"./images/unknown-person.png"} {...employee}>
+        ? <EmployeeCard key={employee.Id} {...employee}>
             <RemovePersonButton onClick={() => this.removeFromTeam(employee.Login)} />
           </EmployeeCard >
         : null

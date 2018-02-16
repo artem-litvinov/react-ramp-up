@@ -49,6 +49,7 @@ class LoginPage extends Component{
               placeholder='Username'
               name='username'
               onChange={this.onInputChange}
+              required
             />
           </FormGroup>
           <FormGroup>
@@ -57,6 +58,7 @@ class LoginPage extends Component{
               placeholder='Password'
               name='password'
               onChange={this.onInputChange}
+              required
             />
           </FormGroup>
           <FormGroup>

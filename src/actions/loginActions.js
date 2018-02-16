@@ -1,22 +1,35 @@
-import { SET_LOGIN_STATUS, LOGIN_SUCCESS, USER_LOGOUT } from '../constants/actionTypes';
-import loginApi from '../api/loginApi';
+import { SET_LOGIN_STATUS, LOGOUT_SUCCESS } from '../constants/actionTypes';
+import LoginApi from '../api/LoginApi';
 
-export function setLoginStatus(username) {
-  return { type: SET_LOGIN_STATUS };
-}
-
-export function login({ username, password, rememberMe }) {
+export function checkLoginStatus() {
   return function (dispatch) {
-    return loginApi.login(username, password, rememberMe).then(username => {
-      dispatch(loginSuccess(username));
+    return LoginApi.checkLoginStatus().then((loginStatus) => {
+      dispatch(setLoginStatus(loginStatus));
     }).catch(err => { throw (err) });
   }
 }
 
-export function loginSuccess(username) {
-  return { type: LOGIN_SUCCESS, username };
+export function setLoginStatus(loginStatus) {
+  return { type: SET_LOGIN_STATUS, loginStatus };
+}
+
+export function login({ username, password, rememberMe }) {
+  return function (dispatch) {
+    return LoginApi.login(username, password, rememberMe).then(loginStatus => {
+      dispatch(setLoginStatus(loginStatus));
+    }).catch(err => { throw (err) });
+  }
 }
 
 export function logout() {
-  return { type: USER_LOGOUT };
+  return function (dispatch) {
+    return LoginApi.logout().then((loginStatus) => {
+      dispatch(setLoginStatus(loginStatus));
+      dispatch(logoutSuccess());
+    }).catch(err => { throw (err) });
+  }
+}
+
+export function logoutSuccess() {
+  return { type: LOGOUT_SUCCESS };
 }

@@ -16,13 +16,13 @@ class App extends Component {
 
   getMyTeamAmount = (myTeam) => {
     let amount = 0;
-    if (myTeam) {
-      amount = Object.keys(myTeam).reduce((sum, key) => {
-        let current = myTeam[key];
-        if (current === true) return sum + 1;
-        return sum;
-      }, 0);
-    }
+
+    amount = Object.keys(myTeam).reduce((sum, key) => {
+      let current = myTeam[key];
+      if (current === true) return sum + 1;
+      return sum;
+    }, 0);
+
     return amount;
   }
 
