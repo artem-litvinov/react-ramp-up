@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FormGroup, FormControl, Form, InputGroup } from 'react-bootstrap';
+import { FormGroup, Form, InputGroup } from 'react-bootstrap';
 
 import { DeleteButton } from './FAButtons';
 
@@ -27,11 +27,12 @@ class SearchPanel extends Component {
       <Form>
         <FormGroup>
           <InputGroup>
-            <FormControl
+            <input
               ref={this.setSearchRef}
               type='text'
               placeholder='Search'
               onChange={this.props.onChange}
+              className='form-control'
             />
             <InputGroup.Button>
               <DeleteButton onClick={this.clearSearch} />
