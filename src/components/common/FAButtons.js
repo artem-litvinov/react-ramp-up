@@ -1,44 +1,44 @@
 import React from 'react';
 import { faUserPlus, faUserTimes, faSignOutAlt, faTimes } from '@fortawesome/fontawesome-free-solid';
 
-import FAButton from '../common/FAButton';
+import FAButtonBase from '../common/FAButtonBase';
 
 export const AddPersonButton = ({ onClick }) => {
   return (
-    <FAButton
+    <FAButtonBase
       onClick={onClick}
       icon={faUserPlus}
       bsStyle='primary'
-    >Add to my team</FAButton>
+    >Add to my team</FAButtonBase>
   );
 };
 
 export const RemovePersonButton = ({ onClick }) => {
   return (
-    <FAButton
+    <FAButtonBase
       onClick={onClick}
       icon={faUserTimes}
       bsStyle='danger'
-    >Remove from my team</FAButton>
+    >Remove from my team</FAButtonBase>
   );
 }
 
 export const LogoutButton = ({ onClick }) => {
   return (
-    <FAButton
+    <FAButtonBase
       onClick={onClick}
       icon={faSignOutAlt}
       bsStyle='primary'
-    >Log out</FAButton>
+    >Log out</FAButtonBase>
   );
 };
 
 export const DeleteButton = ({ onClick }) => {
   return (
-    <FAButton
+    <FAButtonBase
       onClick={onClick}
       icon={faTimes}
       bsStyle='default'
-    ></FAButton>
+    ></FAButtonBase>
   );
 };

@@ -3,7 +3,7 @@ import { Link, Route } from 'react-router-dom';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { Button } from 'react-bootstrap';
 
-const FAButton = ({ children, onClick, icon, bsStyle }) => {
+const FAButtonBase = ({ children, onClick, icon, bsStyle }) => {
   return (
     <Button onClick={onClick} bsStyle={bsStyle}>
       <FontAwesomeIcon icon={icon} /> {children}
@@ -11,4 +11,4 @@ const FAButton = ({ children, onClick, icon, bsStyle }) => {
   );
 };
 
-export default FAButton;
+export default FAButtonBase;
