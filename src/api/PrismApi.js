@@ -6,7 +6,7 @@ function fetchRequest(url, callback) {
       if (response.status === 200) {
         return response.data;
       }
-      throw new TypeError("Oops, something went wrong!");
+      throw new TypeError('Oops, something went wrong!');
     })
     .then(callback)
     .catch(function (error) { console.log(error); });

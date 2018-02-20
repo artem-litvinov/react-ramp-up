@@ -5,7 +5,7 @@ class LoginApi {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (rememberMe) {
-          localStorage.setItem("username", username);
+          localStorage.setItem('username', username);
         }
         resolve({ loggedIn: true, username: username });
       }, delay);

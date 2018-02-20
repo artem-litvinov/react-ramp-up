@@ -16,27 +16,27 @@ const Routes = ({ loggedIn }) => {
           : <Redirect push to='/login' />
       )} />
       <PublicRoute
-        exact path="/login"
+        exact path='/login'
         authed={loggedIn}
-        redirectTo="/home"
+        redirectTo='/home'
         component={LoginPage}
       />
       <PrivateRoute
-        exact path="/home"
+        exact path='/home'
         authed={loggedIn}
-        redirectTo="/login"
+        redirectTo='/login'
         component={HomePage}
       />
       <PrivateRoute
-        exact path="/people"
+        exact path='/people'
         authed={loggedIn}
-        redirectTo="/login"
+        redirectTo='/login'
         component={PeoplePage}
       />
       <PrivateRoute
-        exact path="/my-team"
+        exact path='/my-team'
         authed={loggedIn}
-        redirectTo="/login"
+        redirectTo='/login'
         component={MyTeamPage}
       />
     </div>
